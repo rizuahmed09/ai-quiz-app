@@ -16,8 +16,6 @@ This web app, built with Streamlit and the Google Gemini API, instantly generate
 <img width="1901" height="882" alt="Screenshot (158)" src="https://github.com/user-attachments/assets/731d74c3-5f5d-49cb-a659-6d96de8ddb30" />
 <img width="1703" height="791" alt="Screenshot (159)" src="https://github.com/user-attachments/assets/2b90bfed-eb9b-4269-8a18-0190112e95af" />
 
-![Quiz App Demo GIF](https://github.com/user/repo/assets/12345/...)
-
 ---
 
 ## ✨ Features
