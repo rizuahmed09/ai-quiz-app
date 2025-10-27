@@ -3,9 +3,10 @@ import json
 import os
 from dotenv import load_dotenv
 import google.generativeai as genai
+import google.api_core.exceptions 
 
 # --- Constants ---
-DEFAULT_MODEL_NAME = 'gemini-2.5-pro' # As you specified
+DEFAULT_MODEL_NAME = 'gemini-2.5-pro' 
 
 # --- Load Environment Variables ---
 load_dotenv()
@@ -82,6 +83,14 @@ def fetch_questions(text_content, quiz_level, model_name=DEFAULT_MODEL_NAME):
         st.error(f"Failed to parse the API response as JSON. Check console log for raw response.")
         print(f"RAW API RESPONSE (JSON PARSE FAILED):\n{extracted_response}")
         return []
+
+    # --- ADD THIS NEW BLOCK ---
+    except google.api_core.exceptions.ResourceExhausted as e:
+        st.error("🚦 Rate limit exceeded. The API is busy. Please wait a minute and try again.")
+        print(f"RATE LIMIT ERROR: {e}")
+        return []
+    # --- END NEW BLOCK ---
+
     except Exception as e:
         st.error(f"An unexpected error occurred: {e}")
         print(f"UNEXPECTED ERROR: {e}") # Log to console for debugging
